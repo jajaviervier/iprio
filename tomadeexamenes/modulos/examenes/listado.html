@@ -1,0 +1,41 @@
+<script src="modulos/estudios/js/estudios.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+cargarExamenes();
+    $('.modal').modal();
+ });
+</script>
+<div class="row white">
+    <div class="col s12">
+        <h4>
+            Listado de Estudios
+        </h4>
+    </div>
+    <div class="col s12">
+        <table class="bordered striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Sigla
+                    </th>
+                    <th>
+                        Editar
+                    </th>
+                    <th>
+                        opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaExamenes">
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Structure -->

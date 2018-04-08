@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js">
+        </script>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
+            <meta content="IE=edge" http-equiv="X-UA-Compatible">
+                <title>
+                    Admin
+                </title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+                </script>
+                <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+                </script>
+                <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+                    <!-- Favicons-->
+                    <!-- Compiled and minified CSS -->
+                    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
+                        <!-- Compiled and minified JavaScript -->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+                        </script>
+                        <script src="js/login.js" type="text/javascript">
+                        </script>
+                        <script src="js/utileria.js" type="text/javascript">
+                        </script>
+                        <script src="js/cargadores.js" type="text/javascript">
+                        </script>
+                        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                            <!-- Favicons-->
+                            <link href="images/favicon/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed">
+                                <!-- For iPhone -->
+                                <meta content="#00bcd4" name="msapplication-TileColor">
+                                    <meta content="images/favicon/mstile-144x144.png" name="msapplication-TileImage">
+                                    </meta>
+                                </meta>
+                            </link>
+                        </link>
+                    </link>
+                </link>
+            </meta>
+        </meta>
+    </head>
+</html>
+<body class="indigo lighten-4">
+    <nav>
+        <div class="nav-wrapper indigo">
+            <a class="brand-logo" href="#!">
+                IPrio
+            </a>
+            <a class="button-collapse" data-activates="mobile-demo" href="#">
+                <i class="material-icons">
+                    menu
+                </i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li id="avisoNotificaciones">
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdownSolicitudes" href="#!">
+                        Solicitudes Exam
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdownEstudios" href="#!">
+                        Estudios
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdownPacientes" href="#!">
+                        Pacientes
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdownDerivadores" href="#!">
+                        Derivadores
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropdownMedicos" href="#!">
+                        Medicos
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropDownRecepcionistas" href="#!">
+                        Recepcionistas
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-activates="dropDownTomaExamenes" href="#!">
+                        Laboratorio Examenes
+                        <i class="material-icons right">
+                            arrow_drop_down
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#!" onclick="logout()">
+                        <i class="material-icons right">
+                            power_settings_new
+                        </i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropDownTomaExamenes">
+                <li onclick="cargadorModulo('app', 'tomadeexamenes', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'tomadeexamenes', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropdownDerivadores">
+                <li onclick="cargadorModulo('app', 'derivadores', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'derivadores', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropDownRecepcionistas">
+                <li onclick="cargadorModulo('app', 'recepcion', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'recepcion', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropdownMedicos">
+                <li onclick="cargadorModulo('app', 'medicos', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'medicos', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropdownPacientes">
+                <li onclick="cargadorModulo('app', 'pacientes', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'pacientes', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropdownSolicitudes">
+                <li onclick="cargadorModulo('app', 'examenes', 'pendientes') ">
+                    <a href="#!">
+                        Pendientes
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'examenes', 'finalizados') ">
+                    <a href="#!">
+                        Finalizadas
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'examenes', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="dropdown-content" id="dropdownEstudios">
+                <li onclick="cargadorModulo('app', 'estudios', 'listado') ">
+                    <a href="#!">
+                        Listado
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li onclick="cargadorModulo('app', 'estudios', 'agregar') ">
+                    <a href="#!">
+                        Agregar
+                    </a>
+                </li>
+                <li class="divider">
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    assignment
+                                </i>
+                                Solicitud Examenes
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li onclick="cargadorModulo('app', 'examenes', 'pendientes') ">
+                                        <a href="#!">
+                                            Pendientes
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'examenes', 'finalizados') ">
+                                        <a href="#!">
+                                            Finalizadas
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'examenes', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Fin Pacientes -->
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    assignment_ind
+                                </i>
+                                Pacientes
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li onclick="cargadorModulo('app', 'pacientes', 'listado') ">
+                                        <a href="#!">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'pacientes', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Fin solicitud examen-->
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    account_circle
+                                </i>
+                                Medicos
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#!" onclick="cargadorModulo('app', 'medicos', 'listado') ">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'medicos', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Fin solicitud examen-->
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    content_paste
+                                </i>
+                                Estudios
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li onclick="cargadorModulo('app', 'estudios', 'listado') ">
+                                        <a href="#!">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'estudios', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    account_circle
+                                </i>
+                                Recepcion
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#!" onclick="cargadorModulo('app', 'recepcion', 'listado') ">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'recepcion', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="black-text">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">
+                                    account_circle
+                                </i>
+                                Toma de Examenes
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#!" onclick="cargadorModulo('app', 'tomadeexamenes', 'listado') ">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li onclick="cargadorModulo('app', 'tomadeexamenes', 'agregar') ">
+                                        <a href="#!">
+                                            Agregar
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Fin solicitud examen-->
+                <li>
+                    <a href="#!" onclick="logout()">
+                        Logout
+                        <i class="material-icons right">
+                            power_settings_new
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="app">
+    </div>
+</body>
+<!-- ================================================
+    Scripts
+    ================================================ -->
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js">
+</script>
+<!-- CSS -->
+<link href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css" rel="stylesheet"/>
+<script type="text/javascript">
+    $( document ).ready(function(){
+$(".button-collapse").sideNav();
+$(".dropdown-button").dropdown();
+ $('.collapsible').collapsible();
+
+ sessionStorage.controlPaciente =false
+sessionStorage.controlEstudio=false
+sessionStorage.controlMedico=false
+    })
+</script>

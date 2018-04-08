@@ -1,0 +1,168 @@
+<script src="modulos/examenes/js/examenes.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+cargarExamenesPendientes();
+    $('.modal').modal();
+ });
+</script>
+<section>
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <div class="row">
+                <!-- collection Medico-->
+                <div class="col s10 m8">
+                    <span class="card-title">
+                        Detalle Examen
+                    </span>
+                </div>
+                <div class="col s12 m6">
+                    <ul class="collection ">
+                        <li class="collection-item">
+                            <div>
+                                Medico
+                            </div>
+                            <li class="collection-item">
+                                <div>
+                                    Nombre
+                                    <a class="secondary-content" href="#!">
+                                        <span id="nombreMedicoOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Apellido
+                                    <a class="secondary-content" href="#!">
+                                        <span id="apellidoMedicoOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Rut
+                                    <a class="secondary-content" href="#!">
+                                        <span id="rutMedicoOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </li>
+                    </ul>
+                </div>
+                <!-- collection paciente-->
+                <div class="col s12 m6">
+                    <ul class="collection ">
+                        <li class="collection-item">
+                            <div>
+                                Paciente
+                            </div>
+                            <li class="collection-item">
+                                <div>
+                                    Nombre
+                                    <a class="secondary-content" href="#!">
+                                        <span id="nombrePacienteOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Apellido
+                                    <a class="secondary-content" href="#!">
+                                        <span id="apellidoPacienteOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Rut
+                                    <a class="secondary-content" href="#!">
+                                        <span id="rutPacienteOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </li>
+                    </ul>
+                </div>
+                <!-- collection Estudio-->
+                <div class="col m6 s12">
+                    <ul class="collection ">
+                        <li class="collection-item">
+                            <div>
+                                Estudio
+                            </div>
+                            <li class="collection-item">
+                                <div>
+                                    Nombre
+                                    <a class="secondary-content" href="#!">
+                                        <span id="nombreExamenOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Tipo
+                                    <a class="secondary-content" href="#!">
+                                        <span id="siglaExamenOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>
+                                    Sigla
+                                    <a class="secondary-content" href="#!">
+                                        <span id="tipoExamenOpciones">
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 m6" id="collectionArchivo">
+                </div>
+                <div class="col s12 m6" id="collectionOpcionesArchivos">
+                </div>
+                <!-- final row-->
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row white">
+    <div class="col s12">
+        <h4>
+            Examenes Pendientes
+        </h4>
+    </div>
+    <div class="col s12">
+        <table class="bordered striped" id="tablaPendientes">
+            <thead>
+                <tr>
+                    <th>
+                        Medico
+                    </th>
+                    <th>
+                        Paciente
+                    </th>
+                    <th>
+                        Estudio
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaExamenesPendientes">
+            </tbody>
+        </table>
+    </div>
+</div>
