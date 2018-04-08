@@ -55,7 +55,7 @@
                       // statements_1
                       location.href = "administrador/panel.html";
                       break;
-                  case 'medico':
+                  case 'derivador':
                       // statements_1
                       location.href = "medicos/panel.html";
                       break;

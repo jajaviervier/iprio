@@ -10,28 +10,10 @@
   firebase.initializeApp(config);
   const ref = firebase.storage().ref();
   var db = firebase.database();
-  var secondaryApp = firebase.initializeApp(config, "Secondary");
+
   //aqui van las credenciales
   var rutacuentas = "sistema/cuentas/";
 
-  function logear(correo, pass) {
-      var control = 0;
-      firebase.auth().signInWithEmailAndPassword(correo, pass).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          control = 1;
-          console.log(error.code)
-          if (error.code == "auth/user-not-found") {
-              alertify.error("Usuario no encontrado");
-          } else {
-              if (error.code == "auth/wrong-password") {
-                  alertify.error("Pass invalida");
-              } else {}
-          }
-          // ...
-      });
-  }
 
   function logout() {
       alertify.confirm('Cerrar Sesion', 'Está seguro que desea cerrar la sesion?', function() {
@@ -43,7 +25,7 @@
       }, function() {});
   }
   firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
+      console.log('Cargando datos')
       if (user) {
           db.ref(rutacuentas).orderByKey().equalTo(firebase.auth().currentUser.uid).once('value', function(datosuser) {
               datosuser.forEach(function(itemuser) {
@@ -51,9 +33,11 @@
                   sessionStorage.tipocredencial = itemuser.val().tipo;
                   sessionStorage.nombreusuario = itemuser.val().nombre;
               })
+              console.log(sessionStorage.tipocredencial+" Tipo usuario Logeado")
               switch (sessionStorage.tipocredencial) {
-                  case 'medico':
+                  case 'derivador':
                       // statements_1
+                      
                       cargadorModulo('app', 'examenes', 'pendientes');
                       break;
                   default:
